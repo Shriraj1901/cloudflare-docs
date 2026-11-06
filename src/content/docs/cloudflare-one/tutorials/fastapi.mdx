@@ -26,6 +26,10 @@ This tutorial covers how to validate that the [Access JWT](/cloudflare-one/acces
 1. In your FastAPI project, create a new file called `cloudflare.py` that contains the following code:
 
 ```python
+import json
+
+import jwt
+import requests
 from fastapi import Request, HTTPException
 
 # The Application Audience (AUD) tag for your application
@@ -98,7 +102,7 @@ from cloudflare import validate_cloudflare
 router = APIRouter(
     prefix="/admin",
     tags=["admin"],
-    dependencies=[Depends(validate_cloudflare)]
+    dependencies=[Depends(validate_cloudflare)],
     responses={404: {"description": "Not found"}},
 )
 

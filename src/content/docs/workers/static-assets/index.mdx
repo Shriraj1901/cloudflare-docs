@@ -114,7 +114,7 @@ class Default(WorkerEntrypoint):
 	async def fetch(self, request):
 		# Example of serving static assets
 		url = urlparse(request.url)
-		if url.path.startswith("/api/):
+		if url.path.startswith("/api/"):
 			return Response.json({"name": "Cloudflare"})
 
 		return await self.env.ASSETS.fetch(request)

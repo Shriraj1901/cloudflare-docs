@@ -295,9 +295,9 @@ def verify_token(f):
     Decorator that wraps a Flask API call to verify the CF Access JWT
     """
     def wrapper():
-				# Check for the POLICY_AUD environment variable
-				if not POLICY_AUD:
-					return "missing required audience", 403
+        # Check for the POLICY_AUD environment variable
+        if not POLICY_AUD:
+            return "missing required audience", 403
 
         token = ''
         if 'CF_Authorization' in request.cookies:
